@@ -1,0 +1,101 @@
+\documentclass[a4paper, 12pt, titlepage]{article}
+\usepackage[cm]{fullpage}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{times}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage[pdftex]{graphicx}
+\usepackage{indentfirst}
+\usepackage{listings}
+\usepackage{amsfonts}
+
+\newtheorem{Def}{Определение}[section]
+
+\newcommand{\Real}{\mathbb{R}}
+\newcommand{\Int}{\mathbb{Z}}
+\newcommand{\Nat}{\mathbb{N}}
+\newcommand{\Rat}{\mathbb{Q}}
+\newcommand{\Com}{\mathbb{C}}
+\newcommand{\Irr}{\mathbb{I}}
+
+\begin{document}
+	\begin{titlepage}
+	\end{titlepage}
+	
+	\section{Функция нескольких переменных}
+		$y = f(x) \:\colon\: x \in X \subset \Real^n \to \Real$\\
+		\begin{Def}	
+			Функция нескольких переменных -- $y$
+		\end{Def}
+		
+	\section{Метрическое пространство}
+		\subsection{Определение}
+			\begin{Def}
+				$X$ -- метрическое пространство, если $\exists \rho \:\colon\: \forall x, y \in X, X \times X \to \Real$
+			\end{Def}
+			$\rho$ называется метрикой, а $\rho(x, y)$ -- расстоянием
+		\subsection{Аксиомы метрики}
+			\begin{enumerate}
+				\item $\rho(x, y) = 0 \leftrightarrow x = y$
+				\item $\rho(x, y) = \rho(y, x)$
+				\item $\rho(x, y) + \rho(y, z) \ge \rho(x, z)$
+			\end{enumerate}
+		\subsection{Примеры метрик}	
+			\begin{enumerate}
+				\item $\mathbb{R}^1 \:\colon\: \rho(x, y) = |x - y|$
+				\item $\mathbb{R}^1 \:\colon\: \rho(x, y) = 2|x - y|$
+				\item $\mathbb{M} \:\colon\: \rho(x, x) = 0, \forall x \ne y \rho(x, y) = \O$
+				\item $\mathbb{R}^2 \:\colon\: \rho(a, b) = \sqrt{(a_x - b_x)^2 + (a_y - b_y)^2}$
+				\item $\mathbb{R}^n \:\colon\: \rho(a, b) = \sqrt{\sum_{\xi}^{\xi \in n} (a_\xi - b_\xi)^2}$
+			\end{enumerate}
+	\section{Последовательности в $\mathbb{R}^n$}
+		\subsection{Определение фундаментальной последовательности}
+			\begin{Def}
+				$x_n$ -- фундаментальная последовательность, если \[\forall \varepsilon > 0 ,\:\exists\: N \:\colon\: \forall n, m \ge N ,\, \rho (x_n, x_m) < \varepsilon\]
+			\end{Def}
+		\subsection{Определение предела последовательности}
+			\begin{Def}
+				$A$ называется пределом последовательности $x_n$, если
+				\[A = \lim_{n \to \infty} x_n \:\colon\: \forall \varepsilon > 0 ,\:\exists\: N \:\colon\: \forall n \ge N ,\, \rho (x_n, A) < \varepsilon\]
+			\end{Def}
+		\subsection{Покоординатная сходимость}
+			\begin{Def}
+				\[\vec{a} \to A \leftrightarrow \forall \xi \in n, \rho (a_\xi, A_\xi) \to 0 \]
+			\end{Def}
+	\section{Нормированное пространство}	
+		\subsection{Определение}
+			\begin{Def}
+				$X$ называется нормированным пространством, если $\exists ||x|| \:\colon\: \forall x \in X, X \to \Real$
+			\end{Def}
+		\subsection{Аксиомы нормы}
+			\begin{enumerate}
+				\item $||x|| = 0 \leftrightarrow x = 0$
+				\item $\forall \alpha \in \Real \:\colon\: ||\alpha x|| = |\alpha| ||x||$
+				\item $\forall x, y \in X \:\colon\: ||x + y|| \le ||x|| + ||y||$
+			\end{enumerate}
+		\subsection{Нормы для $\mathbb{R}^1$, $\mathbb{R}^2$ и $\mathbb{R}^n$}
+			\begin{enumerate}
+				\item $\Real^1 \:\colon\: ||a|| = |a|$
+				\item $\Real^2 \:\colon\: ||a|| = \sqrt{a_x^2 + a_y^2}$
+				\item $\Real^n \:\colon\: ||a|| = \sqrt{\sum_{\xi}^{\xi \in n} a_\xi^2}$
+			\end{enumerate}
+		\subsection{Метрика, рождённая нормой}
+		$\rho(x, y) = ||x - y||$
+	\section{Евклидово пространство}
+		\subsection{Определение}
+			\begin{Def}
+				Линейное пространство $X$ называется евклидовым, если в нём определена операция скалярного произведения:
+				\[<\!\!x, y\!\!> \:\colon\: x, y \in X, X \times X \to \Real\]
+			\end{Def}
+		\subsection{Аксиомы скалярного произведения}
+			\begin{enumerate}
+				\item $<\!\!x, x\!\!> \ge 0, <\!\!x, x\!\!> = 0 \leftrightarrow x \ 0$
+				\item $<\!\!x, y\!\!> = \overline{<\!\!y, x\!\!>}$
+				\item $<\!\!x + y, z\!\!> = <\!\!x, z\!\!> + <\!\!y, z\!\!>$
+				\item $<\!\!\alpha x, y\!\!> = \alpha <\!\!x, y\!\!>$
+			\end{enumerate}
+		\subsection{Норма, рождённая скалярным произведением}
+		$||x|| = \sqrt{<\!\!x, x\!\!>}$
+\end{document}
