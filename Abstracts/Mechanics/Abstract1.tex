@@ -1,0 +1,88 @@
+\documentclass[a4paper, 12pt, titlepage, fleqn]{article}
+\usepackage[cm]{fullpage}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{times}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage[pdftex]{graphicx}
+\usepackage{indentfirst}
+\usepackage{listings}
+\usepackage{amsfonts}
+
+\newtheorem{Def}{Определение}[section]
+
+\newcommand{\Real}{\mathbb{R}}
+\newcommand{\Int}{\mathbb{Z}}
+\newcommand{\Nat}{\mathbb{N}}
+\newcommand{\Rat}{\mathbb{Q}}
+\newcommand{\Com}{\mathbb{C}}
+\newcommand{\Irr}{\mathbb{I}}
+\newcommand{\T}{\textbf}
+\begin{document}
+	\begin{titlepage}
+	\end{titlepage}
+	\section{Обобщённые координаты} 
+		\[
+			\vec{r} \textbf{ -- радиус-вектор}
+		\] 
+		\[
+			\vec{v} = \dot{\vec{r}} = \frac{d \vec{r}}{dt} \T{ -- скорость}
+		\]
+		\[
+			\vec{a} = \dot{\vec{v}} = \ddot{\vec{r}} = \frac{d^2 \vec{r}}{dt^2} \T{ -- ускорение}
+		\]
+		\[
+			\vec{r} = (x, y, z)  \T{ -- координатная форма для радиус-вектора}
+		\]
+		\[
+			\vec{v} = (\dot{x}, \dot{y}, \dot{z}) \T{ -- координатная форма для скорости}
+		\]
+		\[
+			\vec{a} = (\ddot{x}, \ddot{y}, \ddot{z}) \T{ -- координатная форма для ускорения}
+		\]
+		Координаты для системы точек:
+		\[
+			\vec{r_1} = (x_1, y_1, z_1) 
+		\]
+		\[
+			\vec{r_2} = (x_2, y_2, z_2)
+		\]
+		\[
+			\dots
+		\]
+		\[
+			\vec{r_n} = (x_n, y_n, z_n)
+		\]
+		Таким образом для задания системы из $n$ точек необходимо $3n$ координат. Тогда почему бы не перейти от строго порядка к нестрогому и задавать систему просто $3n$ координат:
+		\[
+			(x_1, y_1, z_1, x_2, y_2, z_2, \dots x_n, y_n, z_n) \to (q_1, q_2, \dots, q_{3n})
+		\]
+		\[
+			q = (q_1, q_2, \dots q_{3n}) \T{ -- физики ленивые. Очень.}
+		\] 
+		\[
+			\dot{q} = (\dot{q_1}, \dot{q_2}, \dots, \dot{q_{3n}})
+		\]
+		\[
+			\ddot{q} = (\ddot{q_1}, \ddot{q_2}, \dots, \ddot{q_{3n}})
+		\]
+		\[
+			\ddot{q} = f(q, \dot{q}, t) \T{ -- закон мира(оно работает, попытка избежать этого закона провальна)}
+		\]
+	\section{Принцип наименьшего действия}
+		\subsection{Формулировка}
+			\[
+				S = \int_{t_1}^{t_2} L(q, \dot{q}, t)dt \T{ , где } S \T{ -- действие}
+			\]
+			Механическая система двигается так, чтобы до $S$ было минимальным
+		\subsection{Объяснение необходимости}
+			(По Ландау) Пусть $A$ и $B$ -- начальная и конечная точки движения с $q_1$, $t_1$ и $q_2$, $t_2$, тогда существуют какие-то возможные траектории движения $S, S', \dots, S^{(n)}$
+			\[
+				\bar{S} = min(S, S', \dots, S^{(n)}) \T{ где } \bar{S} \T{ является идеальным действием для данной системы}
+			\]
+			(По Фейману) Пусть каждый путь из $A$ в $B$ определяется не $S$, а $e^{i\frac{S}{den}}$
+	\section{Принцип относительности Галилея}
+	\section{Функция Лангранжа свободной материальной точки}
+\end{document}
