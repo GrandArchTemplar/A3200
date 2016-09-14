@@ -20,6 +20,10 @@
 \newcommand{\Com}{\mathbb{C}}
 \newcommand{\Irr}{\mathbb{I}}
 \newcommand{\T}{\textbf}
+\newcommand{\D}{\partial}
+\newcommand{\Where}{\T{, где }}
+\newcommand{\Indexes}{\T{, }\forall i \in (1, \dots, n)}
+
 \begin{document}
 	\begin{titlepage}
 	\end{titlepage}
@@ -82,7 +86,48 @@
 			\[
 				\bar{S} = min(S, S', \dots, S^{(n)}) \T{ где } \bar{S} \T{ является идеальным действием для данной системы}
 			\]
-			(По Фейману) Пусть каждый путь из $A$ в $B$ определяется не $S$, а $e^{i\frac{S}{den}}$
+			(По Фейману) Пусть каждый путь из $A$ в $B$ определяется не $S$, а $e^{i\frac{S}{\hbar}}$. ($\hbar$ -- постоянная Планка)\\
+			Тогда $\rho = |\sum e^{i\frac{S}{\hbar}}|^2$\\
+			
+			$e^{i\frac{S}{\hbar}} = \cos(\frac{S}{\hbar}) + i\sin(\frac{S}{\hbar})$\\
+			
+			Таким образом, каждая из наших функций при больших $S$ при сложении гасят друг друга.\\
+			
+			Рассмотрим функцию $y = x^2$: заметим, что при достаточно больших $x$ $\Delta y \sim \Delta x$, а при малых $x$ $\Delta y \sim (\Delta x)^2$.\\
+			
+			Тогда $S$ влияющие на $\rho$ это такие $S$, что $|S - S_min| < \varepsilon$, где величина $\varepsilon$ показывает уровень квантовости мира.
+			
+		\subsection{Вариационное исчисление}
+		\[
+			y(x) \: \colon\: I = \int_{x_1}^{x_2} F(y(x), y'(x), x)dx
+		\] 
+		Представим функциональное одномерное пространство такое, что $\forall \varepsilon\: \exists y(x)$ и $\exists \bar{y}(x)$ для $\varepsilon = 0$\\
+		\[
+			y(x) = \bar{y}(x) + \psi(x) \cdot \varepsilon
+		\]
+		$\varepsilon$ -- искомое отклонение
+		\[
+			F(y(x)) = \int_{x_1}^{x_2} F(\bar{y}(x) + \psi(x) \cdot \varepsilon, \bar{y}'(x) + \psi'(x) \cdot \varepsilon, x)dx
+		\]
+		\[
+			\frac{dI}{d\varepsilon} = \int_{x_1}^{x_2}(\frac{\partial F}{\partial y}\psi(x) + \frac{\partial F}{\partial y'}\psi'(x))dx
+		\]
+		$x_1$ и $x_2$ -- начальная и конечная точки\\ 
+		$y(x_1) = y_1$ \\
+		$y(x_2) = y_2$\\
+		$\psi(x_1) = \psi(x_2) = 0$
+		\[
+			\int_{x_1}^{x_2} \underbrace{\frac{\partial F}{\partial y'}}_u \underbrace{\psi'(x)dx}_{dv} = \underbrace{\frac{\partial F}{\partial y}\psi(x)|_{x_1}^{x_2}}_a - \int_{x_1}^{x^2} \psi(x)\frac{dF}{dx}dx = \T{//} \int u\cdot dv = u \cdot v - \int du \cdot v 
+		\]
+		\[
+			\psi|_{x_1}^{x_2} = 0 \to a = 0 
+		\]
+		\[
+			= \int_{x^1}^{x_2} \left(\frac{\partial F}{\D y} \psi - \psi \frac{d}{dx} \frac{\D F}{\D y'} \right)dx = 
+		\]
+		\[
+			= \int_{x_1}^{x_2} 
+		\]
 	\section{Принцип относительности Галилея}
 	\section{Функция Лангранжа свободной материальной точки}
 \end{document}
