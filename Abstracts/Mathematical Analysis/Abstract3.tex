@@ -1,0 +1,66 @@
+\documentclass[a4paper, 12pt, titlepage, fleqn]{article}
+\usepackage[cm]{fullpage}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{times}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage[pdftex]{graphicx}
+\usepackage{indentfirst}
+\usepackage{listings}
+\usepackage{amsfonts}
+
+\newtheorem{Def}{Определение}[section]
+\newtheorem{Th}{Теорема}[section]
+\newtheorem{Proof}{Доказательство}[section]
+
+\newcommand{\Real}{\mathbb{R}}
+\newcommand{\Int}{\mathbb{Z}}
+\newcommand{\Nat}{\mathbb{N}}
+\newcommand{\Rat}{\mathbb{Q}}
+\newcommand{\Com}{\mathbb{C}}
+\newcommand{\Irr}{\mathbb{I}}
+\newcommand{\T}{\textbf}
+\newcommand{\D}{\partial}
+\newcommand{\Where}{\T{, где }}
+\newcommand{\Indexes}{\T{, }\forall i \in (1, \dots, n)}
+\begin{document}
+	\begin{Large}
+		\begin{center}
+			Дифференцируемость ФНП
+		\end{center}
+	\end{Large}
+	\section{Частная производная}
+		\subsection{Определение частной производной}
+			$\vec{x^0} = \left(x_1^0, \dots, x_n^0\right)$\\
+			\begin{Def}
+				Рассмотрим $f\left(x_1, \dots, x_n \right) $, тогда 
+				\[
+					\Delta_i f\left(\vec{x^0}\right) = f \left(\vec{x^0} + \Delta\vec{x_{i}^0}\right) - f \left(\vec{x^0}\right) \Where \Delta\vec{x_{i}^0} = \{0, \dots, \Delta x_i, \dots, 0\}	
+				\]
+				\[
+					\frac{\D f}{\D x_i} = \lim_{\Delta x_i \to 0} \frac{\Delta_i f \left(\vec{x^0}\right)}{\Delta x_i}, \: \forall i \in \left(1, \dots, n\right)
+				\]
+			\end{Def}
+		\subsection{Определение дифференцируемости в точке}
+			\begin{Def}
+				$f \left(\vec{x}\right)$ дифференцируема в $\vec{x^0}$, если \[
+					\exists A_i,\: \: \forall i \in \left(1, \dots, n\right) \: \colon \: \Delta f \left(\vec{x^0}\right) = <\!\!\vec{A}, \vec{\Delta x}\!\!>, \|\vec{\Delta x}\| \to 0, \Where \Delta f \left(\vec{x^0}\right) = f \left(\vec{x^0} + \Delta\vec{x}\right) - f \left(x^0\right) 
+				\]
+			\end{Def}
+	\section{Необходимое условие дифференцируемости}
+		\begin{Th}
+			Если функция дифференцируема в $\vec{x^0}$, то $\exists \forall \frac{\D f}{\D x_i}\left(\vec{x^0}\right) \Indexes$
+		\end{Th}
+		\begin{Proof}
+			Будет позже
+		\end{Proof}
+	\section{Достаточное условие дифференцируемости}
+		\begin{Th}
+			Если $\exists \forall \frac{\D f}{\D x_i} \Indexes$ и они непрерывны в $\vec{x^0}$, то $f \left(\vec{x}\right)$ дифференцируема в $\vec{x^0}$
+		\end{Th}
+		\begin{Proof}
+			Будет позже
+		\end{Proof}
+\end{document}
