@@ -1,0 +1,60 @@
+\documentclass[a4paper, 12pt, titlepage, fleqn]{article}
+\usepackage[cm]{fullpage}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{times}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage[pdftex]{graphicx}
+\usepackage{indentfirst}
+\usepackage{listings}
+\usepackage{amsfonts}
+
+\newtheorem{Def}{Определение}[section]
+\newtheorem{Proof}{Доказательство}
+\newtheorem{Th}{Теорема}
+\newcommand{\Real}{\mathbb{R}}
+\newcommand{\Int}{\mathbb{Z}}
+\newcommand{\Nat}{\mathbb{N}}
+\newcommand{\Rat}{\mathbb{Q}}
+\newcommand{\Com}{\mathbb{C}}
+\newcommand{\Irr}{\mathbb{I}}
+\newcommand{\T}{\textbf}
+\newcommand{\D}{\partial}
+\newcommand{\Where}{\T{, где }}
+\newcommand{\Indexes}{\T{, }\forall i \in (1, \dots, n)}
+
+\begin{document}
+	\begin{center}
+		\begin{Large}
+			Конспект 4. Диффференцируемость сложной ФНП. Дифференциал ФНП.
+		\end{Large}
+	\end{center}
+	
+	\section{Дифференциремость сложной ФНП}
+		\begin{Th}[о дифференцируемости сложной ФНП]
+			//многа букафф\\
+			Пусть $\vec{\varphi} = \{\varphi_1(\vec{x}), \dots, \varphi_m(\vec{x})\}$ -- дифференцируема в $\vec{x}^{\,0} \in \Real^n$ \\
+			$f(\vec{y}) = f(y_1, \dots, y_m)$ -- дифференцируема в $\vec{y}^{\,0} = (\varphi_1(\vec{x}^{\,0}), \dots, \varphi_m(\vec{x}^{\,0})) \in \Real^m$\\
+			Тогда $\phi(\vec{x}) = f(\varphi_1(\vec{x}), \dots, \varphi_m(\vec{x})$ дифференцируема в $\vec{x}^{\,0}$ и 
+			\[
+			\frac{\D \phi}{\D x_i}(\vec{x}^{\,0}) = \sum_{j = 1}^{m}\frac{\D f}{\D y_j}(\vec{y}^{\,0})\frac{\Delta\varphi_j}{\D x_i} \Where \Indexes
+			\]
+		\end{Th}
+		\begin{Proof}[о дифференцируемости сложной ФНП]
+			Будет позже.
+		\end{Proof}
+		\section{Дифференциал ФНП}
+			\begin{Def}
+				Пусть $f(x) \: \colon \: \Real^n \to \Real$ дифференцируема в $\vec{x}^{\,0} \in \Real^n$, тогда
+				\[
+					\Delta f = \underbrace{\sum_{\D f}^{\D x_i}(\vec{x}^{\,0})\Delta x_i}_{df(\vec{x}^{\,0})} + o(\|\vec{x}\|)
+				\]
+			\end{Def}
+			$df = \frac{\D f}{\D x} + \frac{\D f}{\D y}$ -- для случая $f : \Real^2 \to \Real$\\
+			$\Delta x = dx$, $\Delta y = dy$\\
+			$df = \frac{\D f}{\D x}dx + \frac{\D f}{\D y}dy$\\
+			\subsection{Геометрический смысл дифференциала ФНП}
+				Геометрический смысл дифференциала ФНП -- $\vec{n} = \{dx, dy, dz\}$ является нормалью к касательной плоскости в точке $(x_0, y_0, z_0)$ для любой кривой $f(\vec{r}) : \Real^3 \to \Real$ 
+\end{document}
