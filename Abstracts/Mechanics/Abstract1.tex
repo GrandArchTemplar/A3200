@@ -12,7 +12,8 @@
 \usepackage{amsfonts}
 
 \newtheorem{Def}{Определение}[section]
-
+\newtheorem{Proof}{Доказательство}
+\newtheorem{Th}{Теорема}
 \newcommand{\Real}{\mathbb{R}}
 \newcommand{\Int}{\mathbb{Z}}
 \newcommand{\Nat}{\mathbb{N}}
@@ -78,7 +79,7 @@
 	\section{Принцип наименьшего действия}
 		\subsection{Формулировка}
 			\[
-				S = \int_{t_1}^{t_2} L(q, \dot{q}, t)dt \T{ , где } S \T{ -- действие}
+				S = \int\limits_{t_1}^{t_2} L(q, \dot{q}, t)dt \T{ , где } S \T{ -- действие}
 			\]
 			Механическая система двигается так, чтобы до $S$ было минимальным
 		\subsection{Объяснение необходимости}
@@ -98,36 +99,318 @@
 			Тогда $S$ влияющие на $\rho$ это такие $S$, что $|S - S_min| < \varepsilon$, где величина $\varepsilon$ показывает уровень квантовости мира.
 			
 		\subsection{Вариационное исчисление}
-		\[
-			y(x) \: \colon\: I = \int_{x_1}^{x_2} F(y(x), y'(x), x)dx
-		\] 
-		Представим функциональное одномерное пространство такое, что $\forall \varepsilon\: \exists y(x)$ и $\exists \bar{y}(x)$ для $\varepsilon = 0$\\
-		\[
-			y(x) = \bar{y}(x) + \psi(x) \cdot \varepsilon
-		\]
-		$\varepsilon$ -- искомое отклонение
-		\[
-			F(y(x)) = \int_{x_1}^{x_2} F(\bar{y}(x) + \psi(x) \cdot \varepsilon, \bar{y}'(x) + \psi'(x) \cdot \varepsilon, x)dx
-		\]
-		\[
-			\frac{dI}{d\varepsilon} = \int_{x_1}^{x_2}(\frac{\partial F}{\partial y}\psi(x) + \frac{\partial F}{\partial y'}\psi'(x))dx
-		\]
-		$x_1$ и $x_2$ -- начальная и конечная точки\\ 
-		$y(x_1) = y_1$ \\
-		$y(x_2) = y_2$\\
-		$\psi(x_1) = \psi(x_2) = 0$
-		\[
-			\int_{x_1}^{x_2} \underbrace{\frac{\partial F}{\partial y'}}_u \underbrace{\psi'(x)dx}_{dv} = \underbrace{\frac{\partial F}{\partial y}\psi(x)|_{x_1}^{x_2}}_a - \int_{x_1}^{x^2} \psi(x)\frac{dF}{dx}dx = \T{//} \int u\cdot dv = u \cdot v - \int du \cdot v 
-		\]
-		\[
-			\psi|_{x_1}^{x_2} = 0 \to a = 0 
-		\]
-		\[
-			= \int_{x^1}^{x_2} \left(\frac{\partial F}{\D y} \psi - \psi \frac{d}{dx} \frac{\D F}{\D y'} \right)dx = 
-		\]
-		\[
-			= \int_{x_1}^{x_2} 
-		\]
+			\[
+				y(x) \: \colon\: I = \int\limits_{x_1}^{x_2} F(y(x), y'(x), x)dx
+			\] 
+			Представим функциональное одномерное пространство такое, что $\forall \varepsilon\: \exists y(x)$ и $\exists \bar{y}(x)$ для $\varepsilon = 0$\\
+			\[
+				y(x) = \bar{y}(x) + \psi(x) \cdot \varepsilon
+			\]
+			$\varepsilon$ -- искомое отклонение
+			\[
+				F(y(x)) = \int\limits_{x_1}^{x_2} F(\bar{y}(x) + \psi(x) \cdot \varepsilon, \bar{y}'(x) + \psi'(x) \cdot \varepsilon, x)dx
+			\]
+			\[
+				\frac{dI}{d\varepsilon} = \int\limits_{x_1}^{x_2}(\frac{\partial F}{\partial y}\psi(x) + \frac{\partial F}{\partial y'}\psi'(x))dx
+			\]
+			$x_1$ и $x_2$ -- начальная и конечная точки\\ 
+			$y(x_1) = y_1$ \\
+			$y(x_2) = y_2$\\
+			$\psi(x_1) = \psi(x_2) = 0$
+			\[
+				\int\limits_{x_1}^{x_2} \underbrace{\frac{\partial F}{\partial y'}}_u \underbrace{\psi'(x)dx}_{dv} = \underbrace{\frac{\partial F}{\partial y}\psi(x)|_{x_1}^{x_2}}_a - \int\limits_{x_1}^{x^2} \psi(x)\frac{dF}{dx}dx = \T{//} \int u\cdot dv = u \cdot v - \int du \cdot v 
+			\]
+			\[
+				\psi|_{x_1}^{x_2} = 0 \to a = 0 
+			\]
+			\[
+				= \int\limits_{x^1}^{x_2} \left(\frac{\partial F}{\D y} \psi - \psi \frac{d}{dx} \frac{\D F}{\D y'} \right)dx = 
+			\]
+			\[
+				= \int\limits_{x_1}^{x_2} \left( \left(\frac{\D F}{\D y} - \frac{d}{dx} \frac{\D F}{\D y'}\right) \psi \right) dx  = 0
+			\]
+			\[
+				\to \int\limits_{x_1}^{x_2} \left(G\left(x\right) \psi \left(x\right) \right) dx = 0 \to G \equiv 0 \T{ -- основная лемма вариационного исчисления}
+			\]
+			\begin{Th}[Основная лемма вариационного исчисления]
+				Пусть
+				\[
+					\int\limits_{x_1}^{x_2} \left(G\left(x\right) \psi \left(x\right) \right) dx = 0 \Where \psi(x) \: \forall f \: \colon \: \Real^n \to \Real
+				\]
+				, тогда
+				\[
+					G \equiv 0
+				\] 
+			\end{Th}
+			\begin{Proof}
+				Известно, что $\psi(x_1) = \psi(x_2) = 0$.\\
+				Тогда зададим $\psi(x)$ так, что $\forall x \in \left((x1, x2) / (x_* - \delta, x_* + \delta)\right) = 0$\\	
+				Получаем, что 
+				\[
+					\int\limits_{x_1}^{x_2} \left(G(x) \psi(x)\right) dx = \int\limits_{x_* - \delta}^{x_* + \delta} \left(G(x) \psi(x)\right) dx =
+				\]
+				По теореме о среднем $\exists x_{**} \in (x_* - \delta, x_* + \delta)$ такое, что
+				\[
+					= G(x_**) \int\limits_{x_* - \delta}^{x_* + \delta} \psi(x)dx				
+				\]
+				Следовательно при $\delta \to 0 ,\: x_{**} = x_*$ и $G(x_*) = 0$\\
+				Это верно для любого $x \in (x_1, x_2)$
+			\end{Proof}
+		\subsection{Уравнения Эйлера и Лагранжа}
+			\[
+				I = \int\limits_{x_1}^{x_2} F\left(y(x), y'(x), x) \right)dx
+			\]
+			\[
+				\frac{d}{dx}\frac{\D F}{\D y'} = \frac{\D F}{\D y} \T{ -- уравнение Эйлера}
+			\]
+			\[
+				S = \int\limits_{x_1}^{x_2} L\left(q, \dot{q}, t\right)dt
+			\]
+			\[
+				\frac{d}{dt}\frac{\D L}{\D \dot{q_i}} = \frac{\D L}{\D q_i} \Indexes \T{ -- уравнение Лагранжа(основное в лагранжевой механике)}
+			\]
+			\[
+				\bar{q}(t), \: q = \bar{q} + \delta q 
+			\]
+			\[
+				\delta S = S\left(\bar{q} + \delta q\right) - S(\bar{q}) = \int\limits_{t_1}^{t_2} \left(\frac{\D L \delta q}{\D q} + \frac{\D L \delta \dot{q}}{\D \dot{q}}\right) dt
+			\]
+			\[
+				S(\bar{q} + \delta q) - S(\bar{q}) = \int\limits_{t_1}^{t_2} L(\bar{q} + \delta q, \dot{\bar{q}} + \delta \dot{q}, t)dt - \int\limits_{t_1}^{t_2} L(\bar{q}, \dot{\bar{q}}, t)dt =
+			\]
+			\[
+				= \int \limits_{t_1}^{t_2} \left(L(\bar{q} + \delta q, \dot{\bar{q}} + \delta \dot{q}, t) - L(\bar{q}, \dot{\bar{q}}, t)\right)dt = 
+			\]
+			\[
+				= \int \limits_{t_1}^{t_2} \left[L(\bar{q}, \dot{\bar{q}}, t) + \frac{\D L}{\D q} \delta q + \frac{\D L}{\D \dot{q}} \delta\dot{q} - L(\bar{q}, \dot{\bar{q}}, t)\right]dt = \T{ // по разложению в ряд Тейлора}
+			\]
+			\[
+				= \int \limits_{t_1}^{t_2} \left(\frac{\D L}{\D q}\delta q + \frac{\D L}{\delta\dot{q}}\delta\dot{q}\right)dt = \int \limits_{t_1}^{t_2} \left(\frac{\D L}{\D q} - \frac{d}{dt}\frac{\D L}{\D \dot{q}} \right)dt + \underbrace{\frac{\D L}{\D \dot{q}}\delta q |_{t_1}^{t_2}}_{=0}
+			\]
+		\subsection{Разложение в ряд Тейлора ФНП}
+			\[
+				f(x) : \Real^n \to \Real
+			\]
+			\[
+				f(x) = \frac{1}{1!}\sum\limits_{i = 1}^{n}\frac{\D f}{\D x_i}\delta x_i + \frac{1}{2!}\sum\limits_{i = 1}^{n}\sum\limits_{j = 1}^{n}\frac{\D^2 f}{\D x_j \D x_i}\delta x_i\delta x_j + \cdots
+			\]
+		\subsection{Свойства L}
+			\subsubsection{Неопределённость L}
+				\[
+					\int\limits_{t_1}^{t_2}\left(L(q, \dot{q, t})\right)dt
+				\]
+				\[
+					\tilde{L} = L + \frac{d}{dt}f(q, t)
+				\]
+				\[
+					\tilde{S} = \int\limits_{t_1}^{t_2} \left(L + \frac{d}{dt}f(q, t)\right) =
+				\]
+				\[
+					= \int\limits_{t_1}^{t_2} Ldt + \delta f(q, t) |_{t_1}^{t_2}
+				\]
+				\[
+					\delta f(q, t) |_{t_1}^{t_2} = 0
+				\]
+				Докажем это:
+				\[
+					\delta f |_{t_1}^{t_2} = \frac{\D f}{\D q}\delta q|_{t_1}^{t_2} = 0
+				\]
+				Тогда,
+				\[
+					\delta\tilde{S} = \delta S = 0
+				\]
+				Так как
+				\[
+					\delta S  \T{ -- уравнение движения и } \delta f(q, t) |_{t_1}^{t_2} = 0 
+				\]
+				Запишем уравнение Лагранжа
+				\[
+					\frac{d}{dt}\frac{\D L}{\D \dot{q}} = \frac{\D L}{\D q} //(1) 
+				\]
+				\[
+					\frac{d}{dt}\frac{\D \tilde{L}}{\D \dot{q}} = \frac{\D \tilde{L}}{\D q} //(2)
+				\]
+				\[
+					\frac{d}{dt}\frac{\D(\tilde{L} - L)}{\D \dot{q}} = \frac{\D(\tilde{L} - L)}{\D q} //   (2) - (1)
+				\]
+				\[
+					\frac{d L}{dt} = \frac{\D f}{\D t} + \frac{\D L}{\D q}\dot{q}
+				\]
+			\subsubsection{Аддитивность функции Лагранжа}
+				Допустим существует множества A и B. Каждое из них образует некую механическую систему. Тогда если множество А никак не влияет на множество В и множество В никак не влияет на множества, то будет верно следующее равенство:
+				\[
+					L_{AB} = L(q_A, q_B, \dot{q}_A, \dot{q}_B, t) = L_A(q_A, \dot{q}_A, t) + L_B(q_B, \dot{q}_B, t)
+				\]
+				\[
+					L_{AB} = L_A + L_B
+				\]
+				Запишем уравнение Лагранжа:
+				\[
+					\frac{d}{dt}\frac{\D L_{AB}}{\D \dot{q}_A} = \frac{\D L_{AB}}{\D q_A}
+				\]
+				и
+				\[
+					\frac{d}{dt}\frac{\D L_{AB}}{\D \dot{q}_B} = \frac{\D L_{AB}}{\D q_B} 
+				\]
+				\[
+					\frac{\D L_{AB}}{\D \dot{q}_A} = \frac{\D L_A}{\D \dot{q}_A} + \frac{\D L_B}{\D \dot{q}_B} = \frac{\D L_A}{\D \dot{q}_A}	
+				\]
+				\[
+					\frac{\D L_{AB}}{\D\dot{q}_B} = \frac{\D L_A}{\D\dot{q}_B} + \frac{\D L_B}{\D\dot{q}_B} = \frac{\D L_B}{\D\dot{q}_B}
+				\]
 	\section{Принцип относительности Галилея}
-	\section{Функция Лангранжа свободной материальной точки}
+		$\exists$системы отсчёта, в которых пространство однородно и изотропно, а время --- однородно. \\
+		Такие системы отсчёта называются инерциальными\\
+		Постулаты:
+			\begin{enumerate}
+				\item Однородное пространство --- пространство, в котором все точки пространства равноправны 
+				\item Изотропность пространства --- повороты пространства не меняют законов
+				\item Пространство с однородностью времени --- пространство, в котором все моменты времени равноправны
+			\end{enumerate}
+		Рассмотрим материальную точку.\\
+		Для неё существует соответсвующая функция Лагранжа $L(q. \dot{q}, t)$ или $L(\vec{r}, \vec{v}, t)$\\
+		Тогда зависимость от времени пропадает из-за однородности времени, зависимость от координаты пропадает из-за однородности пространства, а  зависимость от $\vec{v}$ преобразуется в зависимость от $|\vec{v}|$\\
+		Получаем $L(\vec{r}, \vec{v}, t) \to L(|\vec{v}|)$\\
+		Тогда давайте рассматривать зависимость не от $|\vec{v}|$, а от $v^2$\\
+		Таким образом, в случае материальной точки функция Лагранжа зависит только от модуля скорости
+		\[
+			\frac{d}{dt}\frac{\D L}{\D \vec{v}} = \frac{\D L}{\D \vec{r}} = (\frac{\D L}{\D r_1}, \dots, \frac{\D L}{\D r_n})
+		\]
+		Для материальной точки:
+		\[
+			\frac{d}{dt}\frac{\D L(v^2)}{\D \vec{v}} = \frac{\D L(v^2)}{\D \vec{r}} = 0 // \T{ т.к. L не зависит от } \vec{r} 
+		\]
+		Рассмотрим $\vec{A}$ такой, что 
+		\[
+			A_i = \frac{\D L(v^2)}{\D v_i} \Indexes
+		\]
+		\[
+			A_i = \frac{dL(v^2)}{d(v^2)}\frac{\D v^2}{\D v_i} \Indexes
+		\]
+		\[
+			A_i = 2v_iL'(v^2) 
+		\]
+		Материальная точка в инерциальной системе отсчёта движется с постоянной скоростью\\
+		
+		Допустим, что существуют две системы отсчёта $K$ и $K'$. При этом $K$ движется относительно $K'$ со скоростью $\vec{\vee}$\\
+		ВАЖНО: $|\vee| < < c$\\
+		Тогда преобразования имеют вид:
+		\[
+			\vec{r} = \vec{r'} + \vec{\vee}t
+		\] 
+		\[
+			t = t'
+		\]
+		\[
+			\frac{d\vec{r}}{dt} = \frac{d\vec{r'}}{dt} + \vec{vee}
+		\]
+		\[
+			\vec{v} = \vec{v'} + \vec{\vee}
+		\]
+		Постулат принципа отностиельности: законы механики одинаковы во всех инерциальных системах отсчёта\\
+		Инвариантность --- величина не меняется\\
+		Ковариантность --- функция не меняется(например законы механики)\\
+ 	\section{Функция Лангранжа свободной материальной точки}
+	 	\subsection{Материальная точка в различных системах координат}
+		 	Допустим у нас есть материальная точка, движущаяся со скоростью $\vec{v}$. Рассмотрим её движение в системе отсчёта, двигающуюся относительно инерциальной со скоростью $\vec{\varepsilon} << \vec{v}$
+		 	Тогда
+		 	\[
+			 	\vec{v} = \tilde{\vec{v}} + \vec{\varepsilon}
+		 	\] 
+		 	\[
+			 	\tilde{L} = L((\vec{v} + \vec{\varepsilon})^2) = L(v^2 + 2\vec{v}\vec{\varepsilon} + \underbrace{\varepsilon^2}_{\to 0})
+		 	\]
+		 	\[
+			 	\tilde{L} = L(v^2) + \underbrace{L'(v^2)2\vec{v}\vec{\varepsilon}}_{\frac{d}{dt}L \exists} =
+		 	\]
+		 	\[
+				= L(v^2) + 2\frac{d}{dt}(L(v^2)\vec{r}\vec{\varepsilon})
+		 	\]
+		 \subsection{Масса}
+		 	Таким образом 
+		 	\[
+			 	L(v^2) = Av^2 + B //\T{ мы можем подобрать такую скорость, чтобы B = 0}
+		 	\]
+		 	Пусть $A = \frac{m}{2}$\\
+		 	Тогда 
+		 	\[
+			 	L(v^2) = \frac{mv^2}{2}
+		 	\]
+		 	\[
+			 	\tilde{L} = \frac{m\tilde{v}^2}{2} = 
+			\] 	
+			\[
+			 	 = \frac{m}{2}(\vec{v} + \vec{\vee})^2 =
+			\]
+			\[
+			 	 = \frac{mv^2}{2} + m\vec{v}\vec{\vee} + \frac{m\vee^2}{2} =
+		 	\]
+		 	\[
+			 	= \frac{mv^2}{2} + m\frac{d\vec{r}}{dt}\vec{\vee} + \frac{d}{dt}(\vee^2t) =
+		 	\]
+		 	\[
+			 	= \frac{mv^2}{2} + \frac{d}{dt}(m\vec{r}\vec{\vee} + \frac{m}{2}\vee^2t)
+		 	\]
+		 	Получаем, что при больших $\vee$ уравнение изменяет свой вид
+		 	\[
+				L = \sum\limits_{i = 1}^{n}\frac{m_i v_i}{2}
+		 	\]
+		 	ВАЖНО: $m > 0$\\
+		 	Пусть возможна отрицательная масса.\\
+		 	Тогда 
+		 	\[
+			 	S = \int\limits_{t_1}^{t_2}\left(\frac{mv^2}{2}\right)dt
+		 	\]
+		 	Тогда при существовании объектов с отрицательной массой мы не имеем минимума действия и это плохо(означает, что мы можем двигаться с большой скоростью и чем длиннее путь и больше скорость, тем выгоднее действие, что неправда)\\
+		 	
+	 	\subsection{Потенциальная энергия}
+		 	\[
+			 	L = \underbrace{\sum\limits_{a = 1}^{n}\frac{m_a v_a}{2}}_{\T{Кинетическая энергия(T)}} - \underbrace{U(\vec{r}_1, \dots, \vec{r}_n)}_{\T{Потенциальная энергия(U)}}
+		 	\]
+		 	\[
+			 	\frac{d}{dt}\frac{\D L}{\D \dot{x}_{a_i}} = \frac{\D L}{\D x_{a_i}}
+		 	\]
+		 	\[
+			 	\vec{r}_a = (x_{a_1}, \dots, x_{a_n})
+			\]
+			\[
+				v^2_a = v^2_{a_1} + \dots + v^2_{a_n}
+			\]
+			\[
+				\frac{\D L}{\D \dot{x}_{a_i}} = \dot{x}_{a_i}\frac{m}{2} = m_a x_{a_i}
+			\]
+			\[
+				\frac{d}{dt}(m_a\dot{x}_{a_i}) = m_a\ddot{x}_{a_i}
+			\]
+			\[
+				m_a\ddot{x_{a_i}} = \left(\frac{\D L}{\D x_{a_i}} = -\frac{\D U}{\D x_{a_i}}\right)
+			\]
+			\[
+				m_a\ddot{x_{a_i}} = F_{a_i}
+			\]
+			\[
+				x_{a_i} = f_{a_i}(q_1, \dots, q_s)
+			\]
+			\[
+				v_{a_i} = \dot{x}_{a_i} = \sum\limits_{\kappa = 1}^s\frac{\D f_{a_i}}{q_\kappa}\dot{q}_\kappa
+			\]
+		\subsection{Общий вид кинетической энергии}
+			\[
+				T = \sum\limits_{a = 1}^n\sum\limits_{i = 1}^p\frac{m_a v^2_{a_i}}{2} =// \Where p \T{ --- мерность}
+			\]
+			\[
+				= \sum\limits_{a = 1}^n\frac{m_a}{2}\sum\limits_{i = 1}^p\left(\sum\limits_{\alpha = 1}^{s}\frac{\D f_{a_i}}{\D q_\alpha}\dot{q}_\alpha\right)\times\left(\sum\limits_{\beta = 1}^s\frac{\D f_{a_i}}{\D q_\beta}\dot{q}_\beta\right) =
+			\]
+			\[
+				= \frac{1}{2}\sum\limits_{\alpha, \beta = 1}^s\left[\sum\limits_{a = 1}^n m_a \sum\limits_{i = 1}^p \frac{\D f_{a_i}}{\D q_\alpha}\frac{\D f_{a_i}}{\D q_b} \right]\dot{q}_\alpha\dot{q}_\beta
+			\]
+			\[
+				T = \frac{1}{2}\sum\limits_{\alpha, \beta = 1}^s\Xi_{\alpha\beta}(q)\dot{q}_\alpha\dot{q}_\beta
+			\]
+			\[
+				L = \frac{1}{2}\sum\limits_{\alpha, \beta = 1}^{s}\Xi_{\alpha\beta}(q)q_\alpha q_\beta - U(q_1, \dots, q_n)
+			\]
+			\[
+				\frac{d}{dt}\frac{\D L}{\D \dot{q}_\gamma} = \frac{\D L}{\D q_\gamma}, \gamma \in (1, \dots, s)
+			\]
 \end{document}
