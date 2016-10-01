@@ -1,0 +1,1 @@
+Roman Melnikov: found bug with kinetic energy(1 October 2016)
